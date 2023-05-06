@@ -1,60 +1,48 @@
 import React, { useState } from 'react';
-import mclaren from './images/mclaren.jpg'; // importa a imagem do carro 1
-import ferrari from './images/ferrari.jpg'; // importa a imagem do carro 2
-import lamborghini from './images/lamborghini.jpg'; // importa a imagem do carro 3
-import DefaultCar from './images/carro.jpg'; // imagem padrão para carros não encontrados
+import mclaren from './images/mclaren.jpg';
+import ferrari from './images/ferrari.jpg';
+import lamborghini from './images/lamborghini.jpg';
+import DefaultCar from './images/carro.jpg';
 
 function Pagina4({ setCurrentPage }, { modelName }) {
-  const [carIndex, setCarIndex] = useState(0); // estado que guarda o índice do carro a ser exibido
+  const [carIndex, setCarIndex] = useState(0);
   const [cars, setCars] = useState([
-    { name: 'mclaren', image: mclaren, description: 'Esse é o $(name)' },
-    { name: 'lamborghini', image: lamborghini, description: 'Esse é o Modelo B' },
-    { name: 'ferrari', image: ferrari, description: 'Esse é o Modelo C' }
+    { name: 'mclaren', image: mclaren, description: 'Esse é o mclaren' },
+    { name: 'lamborghini', image: lamborghini, description: 'Esse é o lamborghini' },
+    { name: 'ferrari', image: ferrari, description: 'Esse é o ferrari' }
   ]);
 
-  const currentCarName = cars[carIndex].name; // guarda o nome do modelo do carro atual
+  const currentCarName = cars[carIndex].name;
 
   const handleCarChange = (index) => {
     setCarIndex(index);
   };
 
-  const handleAddCar = (event) => {
-    event.preventDefault();
-    const carName = event.target.carName.value.trim();
-
-    if (carName === '') {
-      return;
+  const handleAddCar = () => {
+    const carName = document.getElementById('carName').value.trim();
+    if (carName !== '') {
+      import(`./images/${carName}.jpg`)
+        .then((image) => {
+          const newCar = { name: carName, image: image.default || DefaultCar, description: `Esse é o ${carName}` };
+          setCars([...cars, newCar]);
+          document.getElementById('carName').value = ''; // Limpar o campo de texto após adicionar o carro
+        })
+        .catch(() => {
+          const newCar = { name: carName, image: DefaultCar, description: `Esse é o ${carName}` };
+          setCars([...cars, newCar]);
+          document.getElementById('carName').value = ''; // Limpar o campo de texto após adicionar o carro
+        });
     }
-
-    let imagemadd;
-    try {
-      imagemadd = require(`./images/${carName}.jpg`);
-    } catch (error) {
-      imagemadd = DefaultCar;
-    }
-
-    setCars([...cars, { name: carName, image: imagemadd, description: `Este é o ${carName}.` }]);
-
   };
 
   const handleRemoveCar = () => {
-    const carName = document.getElementById('removeCarName').value.trim();
-  
-    if (!carName) {
-      return;
+    const carName = document.getElementById('carName').value.trim();
+    if (carName !== '') {
+      const updatedCars = cars.filter((car) => car.name !== carName);
+      setCars(updatedCars);
+      setCarIndex(0);
+      document.getElementById('carName').value = ''; // Limpar o campo de texto após remover o carro
     }
-  
-    const carIndex = cars.findIndex(car => car.name === carName);
-  
-    if (carIndex === -1) {
-      document.getElementById('removeCarName').value = '';
-      return;
-    }
-  
-    const newCars = [...cars];
-    newCars.splice(carIndex, 1);
-    setCars(newCars);
-    setCarIndex(0);
   };
 
   return (
@@ -77,15 +65,12 @@ function Pagina4({ setCurrentPage }, { modelName }) {
               )
           )}
         </div>
+        <div>
+          <input type="text" id="carName" placeholder="Nome do carro" />
+          <button onClick={handleAddCar}>Adicionar Carro</button>
+          <button onClick={handleRemoveCar}>Remover Carro</button>
+        </div>
       </div>
-      <form onSubmit={handleAddCar}>
-        <label>
-          Nome do carro:
-          <input type="text" name="carName" />
-        </label>
-        <button type="submit">Adicionar carro</button>
-        <button onClick={handleRemoveCar}>Remover carro</button>
-      </form>
     </div>
   );
 }
