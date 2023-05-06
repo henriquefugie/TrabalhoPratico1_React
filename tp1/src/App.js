@@ -4,6 +4,7 @@ import Pagina4 from './Pagina2';
 import Pagina4 from './Pagina3';
 import Pagina4 from './Pagina4';
 import Pagina5 from './Pagina5';
+import Pagina3 from './Pagina3';
 
 
 function MainPage({ setCurrentPage }) {
@@ -52,19 +53,19 @@ function Pagina2({ setCurrentPage }) {
   );
 }
 
-function Pagina3({ setCurrentPage }) {
-  const PaginaPrincipal = () => {
-    setCurrentPage('Main');
-    window.history.pushState({ page: 'Main' }, 'Main', '/');
-  };
+// function Pagina3({ setCurrentPage }) {
+//   const PaginaPrincipal = () => {
+//     setCurrentPage('Main');
+//     window.history.pushState({ page: 'Main' }, 'Main', '/');
+//   };
 
-  return (
-    <div>
-      <h2>Página 3</h2>
-      <button onClick={PaginaPrincipal}>Voltar para a página principal</button>
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <h2>Página 3</h2>
+//       <button onClick={PaginaPrincipal}>Voltar para a página principal</button>
+//     </div>
+//   );
+// }
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Main');
