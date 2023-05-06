@@ -5,6 +5,12 @@ import lamborghini from './images/lamborghini.jpg';
 import DefaultCar from './images/carro.jpg';
 
 function Pagina4({ setCurrentPage }, { modelName }) {
+  
+  const PaginaPrincipal = () => {
+    setCurrentPage('Main');
+    window.history.pushState({ page: 'Main' }, 'Main', '/');
+  };
+
   const [carIndex, setCarIndex] = useState(0);
   const [cars, setCars] = useState([
     { name: 'mclaren', image: mclaren, description: 'Esse é o mclaren' },
@@ -71,6 +77,7 @@ function Pagina4({ setCurrentPage }, { modelName }) {
           <button onClick={handleRemoveCar}>Remover Carro</button>
         </div>
       </div>
+      <button onClick={PaginaPrincipal}>Voltar para a página principal</button>
     </div>
   );
 }
