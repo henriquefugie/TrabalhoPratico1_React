@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Pagina1 from './Pagina1';
-// import Pagina4 from './Pagina2';
-// import Pagina4 from './Pagina3';
+import Pagina4 from './Pagina2';
+import Pagina4 from './Pagina3';
 import Pagina4 from './Pagina4';
 import Pagina5 from './Pagina5';
 
