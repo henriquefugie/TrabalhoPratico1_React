@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Pagina1 from './Pagina1';
-import Pagina4 from './Pagina2';
-import Pagina4 from './Pagina3';
+import Pagina2 from './Pagina2';
+import Pagina3 from './Pagina3';
 import Pagina4 from './Pagina4';
 import Pagina5 from './Pagina5';
-import Pagina3 from './Pagina3';
+
 
 
 function MainPage({ setCurrentPage }) {
@@ -18,9 +17,6 @@ function MainPage({ setCurrentPage }) {
       <h1>Página Principal</h1>
       <nav>
         <ul>
-          <li>
-            <button onClick={() => acessaPagina('pagina1')}>Página 1</button>
-          </li>
           <li>
             <button onClick={() => acessaPagina('pagina2')}>Página 2</button>
           </li>
@@ -39,34 +35,6 @@ function MainPage({ setCurrentPage }) {
   );
 }
 
-function Pagina2({ setCurrentPage }) {
-  const PaginaPrincipal = () => {
-    setCurrentPage('Main');
-    window.history.pushState({ page: 'Main' }, 'Main', '/');
-  };
-
-  return (
-    <div>
-      <h2>Página 2</h2>
-      <button onClick={PaginaPrincipal}>Voltar para a página principal</button>
-    </div>
-  );
-}
-
-// function Pagina3({ setCurrentPage }) {
-//   const PaginaPrincipal = () => {
-//     setCurrentPage('Main');
-//     window.history.pushState({ page: 'Main' }, 'Main', '/');
-//   };
-
-//   return (
-//     <div>
-//       <h2>Página 3</h2>
-//       <button onClick={PaginaPrincipal}>Voltar para a página principal</button>
-//     </div>
-//   );
-// }
-
 function App() {
   const [currentPage, setCurrentPage] = useState('Main');
 
@@ -76,8 +44,6 @@ function App() {
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'pagina1':
-        return <Pagina1 setCurrentPage={setCurrentPage} />;
       case 'pagina2':
         return <Pagina2 setCurrentPage={setCurrentPage} />;
       case 'pagina3':
