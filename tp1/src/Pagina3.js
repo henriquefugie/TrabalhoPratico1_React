@@ -15,6 +15,10 @@ function ListaDeFrutas(){
     setnovaFruta('');
   };
 
+  const handleShowSelected = () => {
+    alert('A fruta selecionada é '+ frutaSelecionada);
+  };
+  
   return(
     <div>
       <select value={frutaSelecionada} onChange={handleChange}>
@@ -33,6 +37,8 @@ function ListaDeFrutas(){
         />
 
         <button onClick = {handleAddOption}>Adicionar Fruta</button>
+        <br></br>
+        <button onClick = {handleShowSelected}>Mostrar Fruta Selecionada</button>
     </div>
   );
 }
