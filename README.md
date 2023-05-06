@@ -36,7 +36,7 @@
 - *handleAddOption* é chamado sempre que o usuário adiciona uma nova fruta.
 - *handleShowSelected* é chamado sempre que o usuário clicar no botão de **"Mostrar Fruta Selecionada"**, a função somente chama o alerta, que mostra a informação armazenada no estado *frutaSelecionada*
 
-### O *return* retorna o componente *select* que 
+### O *return* retorna a tag HTML *select* que mantém nossa lista Dropdown e todas as suas funções previamente descritas no enunciado do trabalho.
     
 
 ## Página 4:
