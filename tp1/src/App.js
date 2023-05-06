@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Pagina1 from './Pagina1';
+import Pagina3 from './Pagina3';
 
 
 function MainPage({ setCurrentPage }) {
@@ -48,19 +49,19 @@ function Pagina2({ setCurrentPage }) {
   );
 }
 
-function Pagina3({ setCurrentPage }) {
-  const PaginaPrincipal = () => {
-    setCurrentPage('Main');
-    window.history.pushState({ page: 'Main' }, 'Main', '/');
-  };
+// function Pagina3({ setCurrentPage }) {
+//   const PaginaPrincipal = () => {
+//     setCurrentPage('Main');
+//     window.history.pushState({ page: 'Main' }, 'Main', '/');
+//   };
 
-  return (
-    <div>
-      <h2>Página 3</h2>
-      <button onClick={PaginaPrincipal}>Voltar para a página principal</button>
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <h2>Página 3</h2>
+//       <button onClick={PaginaPrincipal}>Voltar para a página principal</button>
+//     </div>
+//   );
+// }
 
 function Pagina4({ setCurrentPage }) {
   const PaginaPrincipal = () => {
