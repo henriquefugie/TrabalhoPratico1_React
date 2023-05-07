@@ -17,11 +17,26 @@
 
 ## Página Inicial:
 
+A Pagina Inicial serve como um menu principal, possibilitando navegar pelas páginas do projeto por meio de um menu principal, que chama algumas funções principais:
 
+ - *acessaPagina*, que reconhece a página atual e envia o usuário para a página correta.
+ - *setCurrentPage* é a função que é usada para reconhecer em qual página o usuário está.
+ - *window.history.pushState* que atualiza a página para a página desejada.
+ - *renderPage*, que renderiza a página atual no navegador.
 
 ## Página 2:
 
+A página 2 começa declarando dois eventos importantes: A galeria e o número da imagem. Além disso, ela também define algumas funções principais que realizarão as mudanças nas páginas:
 
+- *defineGaleria*, que armazena as mensagens que são mostradas na tela.
+- *defineNumeroImagem*, que define o número da imagem a ser inserida ou removida.
+- *adicionaImagem*, que adiciona uma nova imagem na tela.
+- *removeImagem*, que remove uma imagem já existente na tela.
+
+### Os métodos *adicionaImagem* e *removeImagem*, por serem métodos importantes pro funcionamento da página, devem ser melhor especificados:
+
+- *adicionaImagem* define variável **imagem** que concatena o path padrão da imagem ***"./galeria/cavalo"*** com o número da imagem definido na função *defineImagem*, por meio do *handleChangeImagem*. Após isso, ele redefine a galeria, adicionando a imagem selecionada.
+- *removeImagem* redefine a galeria, de modo a retirar a imagem com o número setado pelo usuário, e limpa o buffer.
 
 ## Página 3:
 
