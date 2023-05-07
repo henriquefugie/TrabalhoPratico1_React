@@ -56,7 +56,10 @@ A página 2 começa declarando dois eventos importantes: A galeria e o número d
 
 ## Página 4:
 
+A página 4 define dois eventos: *carIndex* e *cars*. *cars* armazena o nome e a descrição dos carros, setados por meio do carIndex.
 
+### Após isso, a página chama a função *handleAddCar*, que recebe uma entrada do usuário e retorna a imagem do carro selecionado se ele estiver nos indexes. Caso o carro não estiver no index, ele retorna uma imagem padrão. 
 
 ## Página 5:
 
+A página 4 cria o evento *idades* e define a função *colocaIdades*, que armazena a idade no evento, faz 3 consultas à API ***agify.io***  e mostra na tela uma estimativa da idade de 3 nomes, feitas pela API por meio da função assíncrona *estimulaIdades*.
