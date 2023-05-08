@@ -26,7 +26,6 @@ function Pagina1({ setCurrentPage }) {
 
   return (
     <div>
-      <h2>Página de imagens</h2>
       {galeria.map((img, index) => (
         <img key={index} src={img} alt={`imagem ${index}`} width="250" height="250"></img>
       ))}
