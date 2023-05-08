@@ -53,7 +53,6 @@ function Pagina3({ setCurrentPage }) {
 
     return (
     <div>
-      <h2>Página de Frutas</h2>
       <ListaDeFrutas/>
       <br></br>
       <button onClick={PaginaPrincipal}>Voltar para a página principal</button>
