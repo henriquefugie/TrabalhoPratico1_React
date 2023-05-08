@@ -54,6 +54,7 @@ function Pagina4({ setCurrentPage }, { modelName }) {
   return (
     <div>
       <h2>É um {currentCarName}</h2>
+      <br />
       <div>
         <p>Isto é um {currentCarName}</p>
         <img
@@ -63,6 +64,7 @@ function Pagina4({ setCurrentPage }, { modelName }) {
           style={{maxWidth: '200px'}}
         />
         <div>
+        <br />
           {cars.map(
             (car, index) =>
               index !== carIndex && (
@@ -71,13 +73,16 @@ function Pagina4({ setCurrentPage }, { modelName }) {
                 </button>
               )
           )}
+          
         </div>
         <div>
+        <br />
           <input type="text" id="carName" placeholder="Nome do carro" />
           <button onClick={handleAddCar}>Adicionar Carro</button>
           <button onClick={handleRemoveCar}>Remover Carro</button>
         </div>
       </div>
+      <br />
       <button onClick={PaginaPrincipal}>Voltar para a página principal</button>
     </div>
   );
