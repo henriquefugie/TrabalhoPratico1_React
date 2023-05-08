@@ -56,9 +56,25 @@ function App() {
         return <MainPage setCurrentPage={setCurrentPage} />;
     }
   };
+  
+    const renderText = () => {
+    switch (currentPage) {
+      case 'pagina2':
+        return 'Página 2 - Imagens';
+      case 'pagina3':
+        return 'Página 3 - Frutas';
+      case 'pagina4':
+        return 'Página 4 - Automóveis';
+      case 'pagina5':
+        return 'Página 5 - API';
+      default:
+        return 'Página 1 - Principal';
+    }
+  };
 
   return (
     <div>
+      <h1>{renderText()}</h1>
       {renderPage()}
     </div>
   );
