@@ -60,6 +60,7 @@ function Pagina4({ setCurrentPage }, { modelName }) {
           src={cars[carIndex]?.image || DefaultCar}
           alt={currentCarName}
           onClick={() => alert(cars[carIndex].description)}
+          style={{maxWidth: '200px'}}
         />
         <div>
           {cars.map(
