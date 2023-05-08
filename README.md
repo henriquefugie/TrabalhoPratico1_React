@@ -62,4 +62,4 @@ A página 4 define dois eventos: *carIndex* e *cars*. *cars* armazena o nome e a
 
 ## Página 5:
 
-A página 4 cria o evento *idades* e define a função *colocaIdades*, que armazena a idade no evento, faz 3 consultas à API ***agify.io***  e mostra na tela uma estimativa da idade de 3 nomes, feitas pela API por meio da função assíncrona *estimulaIdades*.
+A página 5 cria o evento *idades* e define a função *colocaIdades*, que armazena a idade no evento, faz 3 consultas à API ***agify.io***  e mostra na tela uma estimativa da idade de 3 nomes, feitas pela API por meio da função assíncrona *estimulaIdades*.
