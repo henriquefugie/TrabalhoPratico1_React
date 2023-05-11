@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
-import mclaren from './images/mclaren.jpg';
-import ferrari from './images/ferrari.jpg';
-import lamborghini from './images/lamborghini.jpg';
-import DefaultCar from './images/carro.jpg';
 
-function Pagina4({ setCurrentPage }, { modelName }) {
-  const [carIndex, setCarIndex] = useState(0);
-  const [cars, setCars] = useState([
-    { name: 'mclaren', image: mclaren, description: 'Esse é o mclaren' },
-    { name: 'lamborghini', image: lamborghini, description: 'Esse é o lamborghini' },
-    { name: 'ferrari', image: ferrari, description: 'Esse é o ferrari' }
-  ]);
+function Pagina4({ setCurrentPage }) {
+  const PaginaPrincipal = () => {
+    setCurrentPage('Main');
+    window.history.pushState({ page: 'Main' }, 'Main', '/');
+  };
 
-  const currentCarName = cars[carIndex].name;
+  const [carIndex, setCarIndex] = useState(null);
+  const [cars, setCars] = useState([]);
+
+  const currentCar = cars[carIndex];
 
   const handleCarChange = (index) => {
     setCarIndex(index);
@@ -23,14 +20,20 @@ function Pagina4({ setCurrentPage }, { modelName }) {
     if (carName !== '') {
       import(`./images/${carName}.jpg`)
         .then((image) => {
-          const newCar = { name: carName, image: image.default || DefaultCar, description: `Esse é o ${carName}` };
+          const newCar = { name: carName, image: image.default, description: `Esse é o ${carName}` };
           setCars([...cars, newCar]);
-          document.getElementById('carName').value = ''; // Limpar o campo de texto após adicionar o carro
+          if (carIndex === null) {
+            setCarIndex(0);
+          }
+          document.getElementById('carName').value = '';
         })
         .catch(() => {
-          const newCar = { name: carName, image: DefaultCar, description: `Esse é o ${carName}` };
+          const newCar = { name: carName, image: null, description: `Esse é o ${carName}` };
           setCars([...cars, newCar]);
-          document.getElementById('carName').value = ''; // Limpar o campo de texto após adicionar o carro
+          if (carIndex === null) {
+            setCarIndex(0);
+          }
+          document.getElementById('carName').value = '';
         });
     }
   };
@@ -40,37 +43,49 @@ function Pagina4({ setCurrentPage }, { modelName }) {
     if (carName !== '') {
       const updatedCars = cars.filter((car) => car.name !== carName);
       setCars(updatedCars);
-      setCarIndex(0);
-      document.getElementById('carName').value = ''; // Limpar o campo de texto após remover o carro
+      setCarIndex(updatedCars.length > 0 ? 0 : null);
+      document.getElementById('carName').value = '';
     }
   };
 
   return (
     <div>
-      <h2>É um {currentCarName}</h2>
+      {currentCar && (
+        <div>
+          <h2>É um {currentCar.name}</h2>
+          <br />
+          <div>
+            <p>Isto é um {currentCar.name}</p>
+            {currentCar.image && (
+              <img
+                src={currentCar.image}
+                alt={currentCar.name}
+                onClick={() => alert(currentCar.description)}
+                style={{ maxWidth: '200px' }}
+              />
+            )}
+            <div>
+              <br />
+              {cars.map(
+                (car, index) =>
+                  index !== carIndex && (
+                    <button key={index} onClick={() => handleCarChange(index)}>
+                      {car.name}
+                    </button>
+                  )
+              )}
+            </div>
+          </div>
+        </div>
+      )}
       <div>
-        <p>Isto é um {currentCarName}</p>
-        <img
-          src={cars[carIndex]?.image || DefaultCar}
-          alt={currentCarName}
-          onClick={() => alert(cars[carIndex].description)}
-        />
-        <div>
-          {cars.map(
-            (car, index) =>
-              index !== carIndex && (
-                <button key={index} onClick={() => handleCarChange(index)}>
-                  {car.name}
-                </button>
-              )
-          )}
-        </div>
-        <div>
-          <input type="text" id="carName" placeholder="Nome do carro" />
-          <button onClick={handleAddCar}>Adicionar Carro</button>
-          <button onClick={handleRemoveCar}>Remover Carro</button>
-        </div>
+        <br />
+        <input type="text" id="carName" placeholder="Nome do carro" />
+        <button onClick={handleAddCar}>Adicionar Carro</button>
+        <button onClick={handleRemoveCar}>Remover Carro</button>
       </div>
+      <br />
+      <button onClick={PaginaPrincipal}>Voltar para a página principal</button>
     </div>
   );
 }
